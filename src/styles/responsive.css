@@ -1,0 +1,369 @@
+/* ---------------------------------------------------------
+   1. CELULAR (MOBILE BASE: < 768px)
+   Estilos base y adaptaciones para pantallas pequeñas
+--------------------------------------------------------- */
+
+/* Ajuste general de contenedores para pantallas móviles */
+.home,
+.mainNav,
+.chatPage,
+.notFound,
+.view,
+.about-card {
+    width: calc(100% - 24px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Navbar en Mobile */
+.mainNav {
+    min-height: auto;
+    padding: 10px 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mainNav__logoImage {
+    height: 50px;
+    width: auto;
+}
+
+.mainNav__links {
+    gap: 16px;
+}
+
+.mainNav__link {
+    font-size: 0.95rem;
+}
+
+.mainNav__button {
+    padding: 8px 16px;
+    font-size: 0.88rem;
+}
+
+/* Disposición principal (Character Layout) en columna para móvil */
+.characterLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Selector de personajes en Celular */
+.characterSelection {
+    padding: 16px;
+}
+
+.characterOption {
+    min-height: auto;
+    padding: 10px;
+}
+
+.characterOption__image {
+    width: 60px;
+    height: 60px;
+}
+
+.characterOption__info strong {
+    font-size: 0.95rem;
+}
+
+.characterOption__info small {
+    font-size: 0.82rem;
+}
+
+/* Perfil y Visualizador 3D en Celular */
+.characterProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 14px;
+}
+
+.characterProfile__cover {
+    min-height: 280px;
+    height: 280px;
+}
+
+#characterModel {
+    min-height: 280px;
+}
+
+.characterProfile__name {
+    font-size: 1.5rem;
+}
+
+.characterProfile__description {
+    font-size: 0.9rem;
+}
+
+/* Ocultar o reducir elementos decorativos para no saturar el móvil */
+.planet-1 {
+    width: 60px;
+    right: 2%;
+    top: 40px;
+}
+
+.planet-2 {
+    width: 80px;
+    left: -20px;
+}
+
+.planet-3 {
+    display: none;
+}
+
+/* Chat Page en Celular */
+.chatPage {
+    height: calc(100dvh - 100px);
+    min-height: 400px;
+    margin-top: 14px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+}
+
+.chatPage__header {
+    padding: 12px 16px;
+    gap: 12px;
+}
+
+.chatPage__avatar {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+}
+
+.chatPage__identity h1 {
+  font-size: 1rem;
+}
+
+.chatPage__messages {
+    padding: 16px 12px;
+    gap: 12px;
+}
+
+.chatBubble {
+    max-width: 88%;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+}
+
+.chatPage__composer {
+    padding: 10px 12px;
+    gap: 8px;
+}
+
+.chatPage__composer input {
+    height: 44px;
+    font-size: 0.9rem;
+}
+
+.chatPage__composer button {
+    min-width: 80px;
+    height: 44px;
+    padding: 0 12px;
+    font-size: 0.88rem;
+}
+
+/* Footer en Celular */
+footer.footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.footer-right {
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* About Card en Celular */
+.about-card {
+    padding: 1.5rem;
+}
+
+.about-card__grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+}
+
+
+/* ---------------------------------------------------------
+   2. TABLET (BREAKPOINT 1: min-width 768px)
+   Ajustes para pantallas medianas (Tablets, iPad)
+--------------------------------------------------------- */
+@media (min-width: 768px) {
+    .home,
+    .mainNav,
+    .chatPage,
+    .notFound,
+    .view,
+    .about-card {
+        width: min(1200px, calc(100% - 48px));
+    }
+
+    .mainNav {
+        min-height: 78px;
+        padding: 14px 22px;
+        margin-top: 24px;
+        flex-wrap: nowrap;
+    }
+
+    .mainNav__logoImage {
+        height: 74px;
+    }
+
+    .mainNav__link {
+        font-size: 1.1rem;
+    }
+
+    .mainNav__button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    /* Redistribución de opciones de personajes a fila o tarjetas más amplias */
+    .characterOption {
+        min-height: 100px;
+        padding: 12px;
+    }
+
+    .characterOption__image {
+        width: 76px;
+        height: 76px;
+    }
+
+    /* Perfil del personaje en Tablet */
+    .characterProfile {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 18px;
+        gap: 20px;
+    }
+
+    .characterProfile__cover {
+        min-height: 360px;
+        height: 100%;
+    }
+
+    #characterModel {
+        min-height: 360px;
+    }
+
+    /* Reaparecen los planetas */
+    .planet-1 { width: 80px; }
+    .planet-2 { width: 110px; }
+    .planet-3 { display: block; width: 60px; }
+
+    /* Chat Page en Tablet */
+    .chatPage {
+        height: min(720px, calc(100dvh - 120px));
+        margin-top: 24px;
+        margin-bottom: 28px;
+        border-radius: 20px;
+    }
+
+    .chatPage__header {
+        padding: 16px 20px;
+    }
+
+    .chatPage__avatar {
+        width: 56px;
+        height: 56px;
+        flex: 0 0 56px;
+    }
+
+    .chatBubble {
+        max-width: 80%;
+        padding: 12px 16px;
+    }
+
+    /* Footer en Tablet */
+    footer.footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 12px 30px;
+    }
+
+    .footer-right {
+        flex-direction: row;
+    }
+
+    /* About Card en Tablet */
+    .about-card {
+        padding: 2rem;
+    }
+
+    .about-card__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.8rem;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   3. DESKTOP / LAPTOP (BREAKPOINT 2: min-width 1024px)
+   Ajustes para pantallas grandes de Escritorio
+--------------------------------------------------------- */
+@media (min-width: 1024px) {
+    /* Grilla de 2 columnas principales para el Home */
+    .characterLayout {
+        display: grid;
+        grid-template-columns: 376px minmax(0, 1fr);
+        gap: 26px;
+        align-items: stretch;
+    }
+
+    .characterOption {
+        min-height: 114px;
+    }
+
+    .characterOption__image {
+        width: 84px;
+        height: 84px;
+    }
+
+    .characterProfile {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+        gap: 26px;
+    }
+
+    .characterProfile__cover {
+        min-height: 400px;
+    }
+
+    #characterModel {
+        min-height: 400px;
+    }
+
+    /* Restablecer tamaño original de planetas */
+    .planet-1 { width: 100px; right: 5%; top: 80px; }
+    .planet-2 { width: 130px; left: 3%; }
+    .planet-3 { width: 70px; right: 2%; }
+
+    /* Chat en Desktop */
+    .chatPage {
+        height: min(760px, calc(100dvh - 140px));
+        margin-top: 28px;
+        margin-bottom: 34px;
+        border-radius: 22px;
+    }
+
+    .chatPage__avatar {
+        width: 62px;
+        height: 62px;
+        flex: 0 0 62px;
+    }
+
+    .chatBubble {
+        max-width: min(78%, 680px);
+    }
+
+    /* About Card en Desktop */
+    .about-card {
+        padding: 2.5rem;
+    }
+}
