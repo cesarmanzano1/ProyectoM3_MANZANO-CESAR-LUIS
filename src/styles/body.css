@@ -1,0 +1,284 @@
+/* =========================
+   1. ESTILOS GENERALES Y BODY
+========================= */
+/*src/styles/body.css*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --space-bg: #080817;
+    --space-panel: rgba(19, 22, 46, 0.88);
+    --space-border: rgba(145, 135, 255, 0.30);
+    --space-blue: #454de5;
+    --space-purple: #853bff;
+    --space-magenta: #c337ff;
+    --space-text: #f7f5ff;
+    --space-muted: #b8bed6;
+    
+    --color-homero: #ffdf32;
+    --color-cartman: #2196ff;
+    --color-elmo: #ff444b;
+    --azul: #1683ff;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--space-text);
+    font-family: inherit;
+
+    /* Fondo espacial degradado, sin estrellas */
+    background:
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(76, 72, 220, 0.35),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(139, 45, 220, 0.28),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #0b1025 0%,
+            #151b3b 45%,
+            #211044 75%,
+            #0b1025 100%
+        );
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+
+
+/* =========================
+   PLANETAS Y FONDO ESPACIAL GLOBAL
+========================= */
+
+.space-background-decor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Para que no afecte los clics */
+    z-index: -1; /* Detrás de todo el contenido */
+    overflow: hidden;
+}
+
+/* Capa para la imagen espacio.jpg con transparencia */
+.bg-space-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/espacio.jpg'); /* Ajusta la ruta si está en otra carpeta (ej: /img/espacio.jpg) */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4; /* <--- AQUÍ REGULAS LA TRANSPARENCIA (0.0 a 1.0) */
+    z-index: -1;
+}
+
+/* Si quieres que además se mezcle con un toque oscuro por encima para que no deslumbre */
+.space-background-decor::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 23, 0.4); /* Capa oscura translúcida opcional */
+    z-index: 0;
+}
+
+.bg-planet {
+    position: absolute;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 20px rgba(133, 59, 255, 0.2));
+    z-index: 1; /* Asegura que los planetas estén por encima de la imagen de fondo */
+}
+
+/* Posiciones fijas de tus planetas */
+.planet-1 {
+    top: 80px;
+    right: 5%;
+    width: 100px;
+    transform: rotate(20deg);
+}
+
+.planet-2 {
+    bottom: 40px;
+    left: 3%;
+    width: 130px;
+    filter: blur(1px) drop-shadow(0 0 15px rgba(69, 77, 229, 0.3));
+}
+
+.planet-3 {
+    top: 45%;
+    right: 2%;
+    width: 70px;
+    opacity: 0.4;
+}
+
+
+
+/* =========================
+   ESTILOS DEL FOOTER
+========================= */
+
+footer {
+    margin-top: auto; /* Empuja el footer siempre hacia el fondo de la pantalla */
+    width: 100%;
+}
+
+footer.footer-bottom {
+    background: linear-gradient(90deg, #19153d, #11142f);
+    border-top: 1px solid var(--space-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-copy {
+    color: var(--space-muted, #b8bed6);
+    font-size: 13px;
+    font-family: inherit;
+    margin: 0;
+}
+
+/* Contenedor derecho para agrupar iconos y autor */
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-dev {
+    color: #fff;
+    font-size: 13px;
+    font-style: normal;
+    font-family: inherit;
+    margin: 0;
+}
+
+.footer-dev strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* LINKEDIN Y GITHUB - ICONOS */
+.iconoa_footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.iconoa_footer .icon {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.iconoa_footer .icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* Tooltip flotante */
+.iconoa_footer .tooltip {
+    position: absolute;
+    top: -35px;
+    background: #1e1b4b;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+.iconoa_footer .tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    background: inherit;
+}
+
+.iconoa_footer .icon:hover .tooltip {
+    opacity: 1;
+    top: -42px;
+}
+
+/* Efectos Hover para Redes */
+.iconoa_footer .github:hover {
+    background: #24292e;
+    border-color: #24292e;
+    transform: translateY(-2px);
+}
+
+.iconoa_footer .linkedin:hover {
+    background: #0A66C2;
+    border-color: #0A66C2;
+    transform: translateY(-2px);
+}

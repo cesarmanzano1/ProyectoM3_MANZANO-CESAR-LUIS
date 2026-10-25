@@ -1,0 +1,199 @@
+/* =========================
+   6. VISTAS ABOUT Y NOT FOUND
+========================= */
+/*src/styles/about_notfound.css*/
+/* =========================
+   6. VISTAS ABOUT Y NOT FOUND
+========================= */
+/*src/styles/about_notfound.css*/
+
+.notFound {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.notFound h1 {
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+.notFound p {
+    margin: 8px 0;
+}
+
+.notFound a,
+.notFound__link {
+    color: #8fcfff;
+    text-decoration: none;
+}
+
+.notFound a:hover {
+    text-decoration: underline;
+}
+
+.view {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 40px 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.view--notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.view__title {
+    margin-bottom: 16px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.view__subtitle {
+    margin-bottom: 20px;
+    color: var(--space-muted);
+    line-height: 1.6;
+}
+
+.btn--primary {
+    display: inline-block;
+    padding: 12px 20px;
+    color: white;
+    background: var(--azul);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn--primary:hover {
+    background: #4295ff;
+}
+
+/* =========================
+   ESTILOS DE LA TARJETA ABOUT (Faltaban)
+========================= */
+
+.about-card {
+    background: rgba(18, 22, 41, 0.85);
+    border: 1px solid rgba(138, 92, 246, 0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 950px; /* Limita el ancho para que no sea gigante */
+    margin: 0 auto;
+    color: #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    text-align: left; /* Alinea los textos a la izquierda dentro de la tarjeta */
+}
+
+.about-card__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .about-card__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.about-card__section h2,
+.about-card__col > h2 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+}
+
+.about-card__section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--space-muted, #94a3b8);
+    margin-bottom: 1.5rem;
+}
+
+/* Badges de tecnologías */
+.stack-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge--node { background: #215732; color: #6cc24a; }
+.badge--js { background: #857212; color: #f7df1e; }
+.badge--postgres { background: #1e3a5f; color: #336791; }
+.badge--react { background: #1a4254; color: #61dafb; }
+
+/* Tarjeta del creador */
+.creator-card {
+    background: rgba(30, 37, 68, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.creator-card__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.creator-card__avatar {
+    width: 48px;
+    height: 48px;
+    background: #312e81;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.creator-card__info h3 {
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.creator-card__info span {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.creator-card__bio {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+/* Footer interno de la tarjeta */
+.about-card__footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

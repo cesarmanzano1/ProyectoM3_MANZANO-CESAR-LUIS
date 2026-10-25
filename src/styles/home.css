@@ -1,0 +1,75 @@
+/* =========================
+   3. CONTENEDOR DEL HOME
+========================= */
+/*src/styles/home.css*/
+
+/* =========================
+   3. CONTENEDOR DEL HOME
+========================= */
+/* src/styles/home.css */
+.home {
+    width: min(1200px, calc(100% - 48px));
+    margin: 40px auto;
+    padding: 0 0 44px;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.home__intro {
+    max-width: 700px;
+    margin-bottom: 32px;
+}
+
+.home__eyebrow {
+    margin-bottom: 12px;
+    color: #a99aff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.home__intro h1 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+}
+
+.home__intro h1 span {
+    color: var(--color-homero, #454de5);
+}
+
+.home__subtitle {
+    max-width: 570px;
+    margin-top: 16px;
+    color: var(--space-muted);
+    line-height: 1.8;
+}
+
+/* Distribución General (Grid) */
+.characterLayout {
+    display: grid;
+    grid-template-columns: 376px minmax(0, 1fr);
+    gap: 26px;
+    align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    flex: 1;
+}
+
+/* Pie de página */
+.homeFooter {
+    width: 100%;
+    margin-top: auto;
+    padding: 20px 0;
+    border-top: 1px solid var(--space-border);
+    text-align: center;
+}
+
+.homeFooter p {
+    margin: 0;
+    color: #d1d5df;
+    font-size: 0.9rem;
+}

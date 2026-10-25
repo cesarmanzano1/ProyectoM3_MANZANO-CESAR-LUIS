@@ -1,0 +1,100 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CharChat | Personajes</title>
+
+
+    <script>
+        window.ModelViewerElement = window.ModelViewerElement || {};
+
+        window.ModelViewerElement.meshoptDecoderLocation =
+            "https://cdn.jsdelivr.net/npm/meshoptimizer@0.18.1/meshopt_decoder.js";
+    </script>
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js">
+    </script>
+
+    <link rel="stylesheet" href="/src/styles/body.css">
+    <link rel="stylesheet" href="/src/styles/navbar.css">
+    <link rel="stylesheet" href="/src/styles/home.css">
+    <link rel="stylesheet" href="/src/styles/characters.css">
+    <link rel="stylesheet" href="/src/styles/chat.css">
+    <link rel="stylesheet" href="/src/styles/about_notfoud.css">
+    <link rel="stylesheet" href="/src/styles/responsive.css">
+</head>
+
+<body>
+   <div class="space-background-decor" aria-hidden="true">
+        <!-- Capa de fondo con tu imagen espacio.jpg -->
+        <div class="bg-space-image"></div>
+
+        <!-- Tus planetas existentes -->
+        <img src="/img/planeta1.png" alt="" class="bg-planet planet-1">
+        <img src="/img/planeta2.png" alt="" class="bg-planet planet-2">
+        <img src="/img/planeta3.png" alt="" class="bg-planet planet-3">
+    </div>
+    <nav class="mainNav">
+        <a class="mainNav__logo" href="/" aria-label="ChatVerso - Inicio">
+            <img src="/img/chatverso-logo0.png" alt="ChatVerso" class="mainNav__logoImage">
+        </a>
+
+        <div class="mainNav__links">
+            <a class="mainNav__link" href="/">Home</a>
+            <a class="mainNav__link" href="/about" id="aboutLink">About Us</a>
+        </div>
+
+        <a class="mainNav__button" href="/chat">
+            Ir al chat
+        </a>
+    </nav>
+
+    <div id="app"></div>
+
+
+
+<footer class="footer-bottom">
+    <p class="footer-copy">
+        © 2026 ChatVerso .
+    </p>
+
+    <div class="footer-right">
+        <ul class="iconoa_footer">
+            <li class="icon linkedin">
+                <a href="https://www.linkedin.com/in/cesar-manzano-62284a346/" target="_blank">
+                    <span class="tooltip">LinkedIn</span>
+                    <img src="img/linkedin.png" alt="LinkedIn" class="icon-img">
+                </a>
+            </li>
+            <li class="icon github">
+                <a href="https://github.com/cesarmanzano1/ProyectoM1_MANZANO-CESAR-LUIS" target="_blank">
+                    <span class="tooltip">GitHub</span>
+                    <img src="img/github.png" alt="GitHub" class="icon-img">
+                </a>
+            </li>
+        </ul>
+        
+        <address class="footer-dev">
+            Desarrollado: <strong>César Luis Manzano</strong>
+        </address>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/src/main.js"></script>
+
+</body>
+
+</html>
+<!-- npx vercel dev -->
