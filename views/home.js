@@ -59,7 +59,7 @@ export function renderHome() {
                             src="/img/erick_cartman.jpg" alt="Eric Cartman">
                         <span class="characterOption__info">
                             <strong>Eric Cartman</strong>
-                            <small>Respect My Authority!</small>
+                            <small>¡Respeten mi autoridad!</small>
                         </span>
                     </button>
 
