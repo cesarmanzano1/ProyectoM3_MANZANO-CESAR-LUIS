@@ -277,6 +277,7 @@ PROYECTOM3_MANZANO-CESAR-LUIS/
 │   ├── services/
 │   ├── styles/
 │   ├── transform/
+│   ├── docIA/
 │   ├── views/
 │   ├── main.js
 │   └── router.js
