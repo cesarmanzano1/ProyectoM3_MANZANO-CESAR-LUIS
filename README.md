@@ -68,8 +68,6 @@ Cada personaje aporta una personalidad diferente para ofrecer una experiencia de
 
 La animación muestra una demostración visual de la aplicación y de su funcionamiento.
 
-> **Importante:** Reemplazar `chat_verso_vista.gif` por el nombre exacto del GIF que se encuentra dentro de la carpeta `img/`.
-
 ---
 
 ## 🛠️ Tecnologías utilizadas
