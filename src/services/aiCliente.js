@@ -34,11 +34,26 @@ export async function getCharacterReply(uiMessages, characterKey = "cartman") {
       body: JSON.stringify(payload),
     });
   } catch (error) {
-    if (error.status === 429 && error.body?.retryAfterSeconds) {
-      // TODO: Agregar lógica de reintento aquí si lo deseas
-    } else {
-      throw error;
+    // if (error.status === 429 && error.body?.retryAfterSeconds) {
+    // } else {
+    //   throw error;
+    // }
+    if (error.status === 429) {
+        const segundos = error.body?.retryAfterSeconds;
+
+        if (segundos) {
+            throw new Error(
+                `Se alcanzó el límite de solicitudes. Intentá nuevamente en ${segundos} segundos.`
+            );
+        }
+
+        throw new Error(
+            "Se alcanzó el límite de solicitudes. Esperá un momento e intentá nuevamente."
+        );
     }
+
+    throw error;
+    
   }
 
   // 4. Normalizar la respuesta a string limpio.

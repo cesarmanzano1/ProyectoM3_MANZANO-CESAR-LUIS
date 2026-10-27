@@ -7,14 +7,14 @@ const characterData = {
     name: "Eric Cartman",
     title: "Chat con Eric Cartman",
     subtitle: "Hablá con Cartman... si te animás.",
-    img: "/img/erick_cartman.jpg",
+    img: "/img/cartman.perfil.jpg",
     greeting: "¡Hola! Soy Eric Cartman. ¿Qué querés, imbécil?",
   },
   homero: {
     name: "Homero Simpson",
     title: "Chat con Homero Simpson",
     subtitle: "Mmm... donas. Hablá con Homero.",
-    img: "/img/homero_simpson.png",
+    img: "/img/homero_perfil.jpeg",
     greeting: "¡Hola! Soy Homero Simpson. ¿Hay donas?",
   },
   elmo: {
@@ -173,9 +173,22 @@ function setupChat() {
 
 
     } catch (error) {
+      // console.error("Error al responder en el chat:", error);
+      // state.status = "error";
+      // state.error = "No pude responder. Revisá la conexión e intentá nuevamente.";
       console.error("Error al responder en el chat:", error);
+
       state.status = "error";
-      state.error = "No pude responder. Revisá la conexión e intentá nuevamente.";
+
+      if (error.status === 429) {
+        const segundos = error.retryAfterSeconds;
+
+        state.error = segundos
+          ? `Alcanzaste el límite de solicitudes. Esperá ${segundos} segundos e intentá nuevamente.`
+          : "Alcanzaste el límite de solicitudes. Esperá un momento e intentá nuevamente.";
+      } else {
+        state.error = error.message || "No pude responder. Revisá la conexión e intentá nuevamente.";
+      }
     } finally {
       updateChatUI();
       const currentInput = document.querySelector("#chatInput");

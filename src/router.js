@@ -10,7 +10,7 @@ import { rendermanagement } from "./views/management.js";
 
 const routes = {
     "/": renderHome,
-    // "/home": renderHome,
+    "/home": renderHome,
     "/about": renderabout,
     "/chat": renderChat,
     "/management": rendermanagement
