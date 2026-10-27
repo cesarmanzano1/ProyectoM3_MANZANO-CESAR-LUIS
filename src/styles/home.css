@@ -1,11 +1,4 @@
-/* =========================
-   3. CONTENEDOR DEL HOME
-========================= */
-/*src/styles/home.css*/
 
-/* =========================
-   3. CONTENEDOR DEL HOME
-========================= */
 /* src/styles/home.css */
 .home {
     width: min(1200px, calc(100% - 48px));

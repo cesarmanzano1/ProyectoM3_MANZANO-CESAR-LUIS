@@ -1,7 +1,8 @@
+
+/*src/styles/chat.css*/
 /* =========================
    5. PANEL DEL CHAT Y PERFIL
 ========================= */
-/*src/styles/chat.css*/
 
 .chatPage {
   width: min(1120px, calc(100% - 36px));
@@ -22,10 +23,20 @@
 .chatPage__header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
   padding: 20px 24px;
   background: linear-gradient(110deg, rgba(74, 72, 180, 0.19), rgba(139, 59, 255, 0.12));
   border-bottom: 1px solid rgba(145, 135, 255, 0.22);
+}
+
+/* Envoltorio que une Avatar e Identidad */
+.chatPage__userMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
 }
 
 .chatPage__avatar {
@@ -258,7 +269,6 @@
     opacity: 0;
     transform: translateY(5px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -269,8 +279,62 @@
   from {
     width: 0;
   }
-
   to {
     width: 1.5em;
   }
+}
+
+/* =========================
+   CONTADOR Y BARRA DE TOKENS
+========================= */
+.tokenCounter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 200px;
+  max-width: 240px;
+  padding: 8px 12px;
+  background: rgba(8, 9, 27, 0.65);
+  border: 1px solid rgba(145, 135, 255, 0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.tokenCounter__headerText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--space-muted, #b8bed6);
+}
+
+.tokenCounter__headerText span:first-child {
+  font-weight: 700;
+  color: #fff;
+}
+
+.tokenCounter__stats {
+  font-size: 0.72rem;
+  color: #cbd5e1;
+}
+
+.tokenCounter__stats strong {
+  color: #63e6be;
+}
+
+.tokenCounter__barContainer {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tokenCounter__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #454de5, #853bff, #c337ff);
+  border-radius: 4px;
+  transition: width 0.4s ease-in-out;
 }

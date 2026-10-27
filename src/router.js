@@ -1,16 +1,21 @@
 
 //src/router.js
 
-import { renderHome } from "../views/home.js";
-import { renderNotFound } from "../views/notfound.js";
-import { renderabout } from "../views/about.js";
-import { renderChat } from "../views/chat.js";
+import { renderHome } from "./views/home.js";
+import { renderNotFound } from "./views/notfound.js";
+import { renderabout } from "./views/about.js";
+import { renderChat } from "./views/chat.js";
+import { rendermanagement } from "./views/management.js";
+
 
 const routes = {
     "/": renderHome,
     // "/home": renderHome,
     "/about": renderabout,
-    "/chat": renderChat
+    "/chat": renderChat,
+    "/management": rendermanagement
+
+
 };
 
 export function router() {
@@ -28,8 +33,7 @@ export function navigateTo(path) {
     window.history.pushState({}, "", url.pathname + url.search);
     router();
 }
-// Navegación SPA para los enlaces del menú. El botón "Ir al chat"
-// recupera el último personaje y su conversación de esta sesión.
+
 document.addEventListener("click", (event) => {
   const link = event.target.closest("a[href]");
   if (!link || event.defaultPrevented || event.button !== 0) return;
@@ -48,14 +52,3 @@ document.addEventListener("click", (event) => {
 });
 
 window.addEventListener("popstate", router);
-
-// window.addEventListener("popstate", router);
-
-// document.addEventListener("click", (event) => {
-//     const link = event.target.closest('a[href="/about"]');
-
-//     if (link) {
-//         event.preventDefault();
-//         navigateTo("/about");
-//     }
-// });

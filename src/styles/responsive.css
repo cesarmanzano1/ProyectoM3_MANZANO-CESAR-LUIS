@@ -1,207 +1,358 @@
 /* ---------------------------------------------------------
    1. CELULAR (MOBILE BASE: < 768px)
-   Estilos base y adaptaciones para pantallas pequeñas
---------------------------------------------------------- */
+   Estilos base y adaptaciones para pantallas pequeñas*/
+ 
+ 
+   @media (max-width: 767px) {
 
-/* Ajuste general de contenedores para pantallas móviles */
-.home,
-.mainNav,
-.chatPage,
-.notFound,
-.view,
-.about-card {
-    width: calc(100% - 24px);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Navbar en Mobile */
-.mainNav {
-    min-height: auto;
-    padding: 10px 16px;
-    margin-top: 12px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.mainNav__logoImage {
-    height: 50px;
-    width: auto;
-}
-
-.mainNav__links {
-    gap: 16px;
-}
-
-.mainNav__link {
-    font-size: 0.95rem;
-}
-
-.mainNav__button {
-    padding: 8px 16px;
-    font-size: 0.88rem;
-}
-
-/* Disposición principal (Character Layout) en columna para móvil */
-.characterLayout {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Selector de personajes en Celular */
-.characterSelection {
-    padding: 16px;
-}
-
-.characterOption {
-    min-height: auto;
-    padding: 10px;
-}
-
-.characterOption__image {
-    width: 60px;
-    height: 60px;
-}
-
-.characterOption__info strong {
-    font-size: 0.95rem;
-}
-
-.characterOption__info small {
-    font-size: 0.82rem;
-}
-
-/* Perfil y Visualizador 3D en Celular */
-.characterProfile {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 14px;
-}
-
-.characterProfile__cover {
-    min-height: 280px;
-    height: 280px;
-}
-
-#characterModel {
-    min-height: 280px;
-}
-
-.characterProfile__name {
-    font-size: 1.5rem;
-}
-
-.characterProfile__description {
-    font-size: 0.9rem;
-}
-
-/* Ocultar o reducir elementos decorativos para no saturar el móvil */
-.planet-1 {
-    width: 60px;
-    right: 2%;
-    top: 40px;
-}
-
-.planet-2 {
-    width: 80px;
-    left: -20px;
-}
-
-.planet-3 {
-    display: none;
-}
-
-/* Chat Page en Celular */
-.chatPage {
-    height: calc(100dvh - 100px);
-    min-height: 400px;
-    margin-top: 14px;
-    margin-bottom: 20px;
-    border-radius: 16px;
-}
-
-.chatPage__header {
-    padding: 12px 16px;
-    gap: 12px;
-}
-
-.chatPage__avatar {
-  width: 46px;
-  height: 46px;
-  flex: 0 0 46px;
-}
-
-.chatPage__identity h1 {
-  font-size: 1rem;
-}
-
-.chatPage__messages {
-    padding: 16px 12px;
-    gap: 12px;
-}
-
-.chatBubble {
-    max-width: 88%;
-    padding: 10px 14px;
-    font-size: 0.92rem;
-}
-
-.chatPage__composer {
-    padding: 10px 12px;
-    gap: 8px;
-}
-
-.chatPage__composer input {
-    height: 44px;
-    font-size: 0.9rem;
-}
-
-.chatPage__composer button {
-    min-width: 80px;
-    height: 44px;
-    padding: 0 12px;
-    font-size: 0.88rem;
-}
-
-/* Footer en Celular */
-footer.footer-bottom {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-    padding: 16px;
-}
-
-.footer-right {
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* About Card en Celular */
-.about-card {
-    padding: 1.5rem;
-}
-
-.about-card__grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-}
-
-
-/* ---------------------------------------------------------
-   2. TABLET (BREAKPOINT 1: min-width 768px)
-   Ajustes para pantallas medianas (Tablets, iPad)
---------------------------------------------------------- */
-@media (min-width: 768px) {
+    
     .home,
     .mainNav,
     .chatPage,
     .notFound,
     .view,
+    .about-card,
+    .about-container-wrapper {
+        width: calc(100% - 24px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Navbar en Mobile (Prioridad Z-Index) */
+    .mainNav {
+        position: relative !important;
+        min-height: 64px !important;
+        padding: 10px 16px !important;
+        margin-top: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        z-index: 1000 !important;
+    }
+
+    .mainNav__logoImage {
+        height: 48px;
+        width: auto;
+    }
+
+    .mainNav__toggle {
+        display: flex !important;
+        z-index: 1002 !important;
+    }
+
+    /* Menú desplegable hamburguesa */
+    .mainNav__content {
+        display: none !important;
+        position: absolute !important;
+        top: calc(100% + 8px) !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 20px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+        background: rgba(12, 14, 32, 0.98) !important;
+        border: 1px solid var(--space-border) !important;
+        border-radius: 16px !important;
+        backdrop-filter: blur(20px) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85) !important;
+        z-index: 1001 !important;
+    }
+
+    .mainNav__content.mainNav__content--active {
+        display: flex !important;
+        animation: fadeInDown 0.25s ease-out forwards;
+    }
+
+    .mainNav__links {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .mainNav__link {
+        font-size: 1rem !important;
+        white-space: nowrap !important;
+    }
+
+    .mainNav__button {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px 16px !important;
+    }
+
+    /* Home / Selector de personajes */
+    .characterLayout {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .characterSelection {
+        height: auto;
+        padding: 16px;
+    }
+
+    .characterOption {
+        min-height: auto;
+        padding: 10px;
+    }
+
+    .characterOption__image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .characterOption__info strong { font-size: 0.95rem; }
+    .characterOption__info small { font-size: 0.82rem; }
+
+    /* Perfil 3D */
+    .characterProfile {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 14px;
+    }
+
+    .characterProfile__cover,
+    #characterModel {
+        min-height: 280px;
+        height: 280px;
+    }
+
+    .characterProfile__name { font-size: 1.5rem; }
+    .characterProfile__description { font-size: 0.9rem; }
+
+    /* Planetas del fondo decorativo global */
+    .planet-1 { width: 60px; right: 2%; top: 40px; }
+    .planet-2 { width: 80px; left: -20px; }
+    .planet-3 { display: none; }
+
+    /* Sección Sobre Nosotros (Tarjeta Misión/Visión) */
     .about-card {
-        width: min(1200px, calc(100% - 48px));
+        padding: 1.5rem 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .about-card__title { font-size: 1.8rem; }
+
+    .about-mission-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .mission-box { padding: 1.2rem; }
+
+    /* =========================================================
+       NUESTROS VALORES - PLANETAS EN CUADRÍCULA (MÓVIL)
+       ========================================================= */
+    .universe-bg {
+        display: none !important; /* Oculta imagen orbital en móvil */
+    }
+
+    .universe-container {
+        height: auto !important;
+        max-width: 100% !important;
+        position: static !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 1.8rem 1rem !important;
+        padding: 1.5rem 0.5rem !important;
+    }
+
+    .planet-item {
+        position: static !important;
+        transform: none !important;
+        width: calc(33.33% - 1rem) !important;
+        min-width: 90px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .planet-item:hover {
+        transform: scale(1.08) !important;
+    }
+
+    .planet-img {
+        width: 52px !important;
+        height: 52px !important;
+        object-fit: contain !important;
+    }
+
+    .planet-label {
+        font-size: 0.78rem !important;
+        margin-top: 6px !important;
+        text-align: center !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Página del Chat */
+    .chatPage {
+        height: calc(100dvh - 90px);
+        min-height: 400px;
+        margin-top: 14px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+    }
+
+    .chatPage__header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 14px !important;
+    }
+
+    .chatPage__identity {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .chatPage__avatar {
+        width: 50px !important;
+        height: 50px !important;
+        flex: 0 0 50px !important;
+    }
+
+    .chatPage__identity h1 {
+        font-size: 1.1rem !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    .chatPage__identity p {
+        font-size: 0.82rem !important;
+        margin-top: 2px !important;
+    }
+
+    .tokenCounter {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 8px 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .chatPage__back {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 8px 12px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .chatPage__messages {
+        padding: 14px 10px;
+        gap: 12px;
+    }
+
+    .chatBubble {
+        max-width: 90%;
+        padding: 10px 13px;
+        font-size: 0.9rem;
+    }
+
+    .chatPage__composer {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+
+    .chatPage__composer input {
+        height: 42px;
+        font-size: 0.88rem;
+    }
+
+    .chatPage__composer button {
+        min-width: 76px;
+        height: 42px;
+        padding: 0 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Sección Director / Management */
+    .about-container-wrapper {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .about-name { font-size: 1.8rem; }
+    .about-description { text-align: left; font-size: 0.95rem; }
+    .tech-logos-container { gap: 1.8rem; }
+    .tech-logo { width: 50px; height: 50px; }
+
+    /* Footer */
+    footer.footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .footer-right {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* ---------------------------------------------------------
+   2. TABLET (BREAKPOINT 1: min-width 768px)
+--------------------------------------------------------- */
+@media (min-width: 768px) {
+
+    .home,
+    .mainNav,
+    .chatPage,
+    .notFound,
+    .view,
+    .about-card,
+    .about-container-wrapper {
+        width: min(1200px, calc(100% - 32px)) !important;
+    }
+
+    /* Layout principal del Home: Apilado vertical cómodo en Tablet */
+    .characterLayout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+
+    .characterSelection {
+        height: auto !important;
+        padding: 18px !important;
+    }
+
+    /* Opciones de personajes más compactas en tablet */
+    .characterOption {
+        min-height: 80px !important;
+        padding: 12px 16px !important;
+    }
+
+    .characterOption__image {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    /* Tarjeta del personaje: Modelo a la izquierda, detalles a la derecha con proporciones adecuadas */
+    .characterProfile {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        padding: 20px !important;
+        gap: 20px !important;
+    }
+
+    .characterProfile__cover {
+        min-height: 380px !important;
+        height: 100% !important;
+    }
+
+    #characterModel {
+        min-height: 380px !important;
+        height: 100% !important;
     }
 
     .mainNav {
@@ -212,52 +363,22 @@ footer.footer-bottom {
     }
 
     .mainNav__logoImage {
-        height: 74px;
+        height: 64px;
     }
 
     .mainNav__link {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 
     .mainNav__button {
-        padding: 12px 24px;
-        font-size: 1rem;
+        padding: 12px 20px;
+        font-size: 0.95rem;
     }
 
-    /* Redistribución de opciones de personajes a fila o tarjetas más amplias */
-    .characterOption {
-        min-height: 100px;
-        padding: 12px;
-    }
-
-    .characterOption__image {
-        width: 76px;
-        height: 76px;
-    }
-
-    /* Perfil del personaje en Tablet */
-    .characterProfile {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: 18px;
-        gap: 20px;
-    }
-
-    .characterProfile__cover {
-        min-height: 360px;
-        height: 100%;
-    }
-
-    #characterModel {
-        min-height: 360px;
-    }
-
-    /* Reaparecen los planetas */
     .planet-1 { width: 80px; }
     .planet-2 { width: 110px; }
     .planet-3 { display: block; width: 60px; }
 
-    /* Chat Page en Tablet */
     .chatPage {
         height: min(720px, calc(100dvh - 120px));
         margin-top: 24px;
@@ -280,7 +401,45 @@ footer.footer-bottom {
         padding: 12px 16px;
     }
 
-    /* Footer en Tablet */
+    .about-card {
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+
+    .about-mission-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
+    .universe-container {
+        height: 460px;
+    }
+
+    .planet-img {
+        width: 62px;
+    }
+
+    .planet-label {
+        font-size: 0.85rem;
+    }
+
+    .about-container-wrapper {
+        padding: 2.5rem 2rem;
+    }
+
+    .about-name {
+        font-size: 2.2rem;
+    }
+
+    .tech-logos-container {
+        gap: 2.8rem;
+    }
+
+    .tech-logo {
+        width: 60px;
+        height: 60px;
+    }
+
     footer.footer-bottom {
         flex-direction: row;
         justify-content: space-between;
@@ -291,60 +450,51 @@ footer.footer-bottom {
     .footer-right {
         flex-direction: row;
     }
-
-    /* About Card en Tablet */
-    .about-card {
-        padding: 2rem;
-    }
-
-    .about-card__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.8rem;
-    }
 }
-
 
 /* ---------------------------------------------------------
    3. DESKTOP / LAPTOP (BREAKPOINT 2: min-width 1024px)
-   Ajustes para pantallas grandes de Escritorio
 --------------------------------------------------------- */
 @media (min-width: 1024px) {
-    /* Grilla de 2 columnas principales para el Home */
+
     .characterLayout {
-        display: grid;
-        grid-template-columns: 376px minmax(0, 1fr);
-        gap: 26px;
-        align-items: stretch;
+        display: grid !important;
+        grid-template-columns: 376px minmax(0, 1fr) !important;
+        gap: 26px !important;
+        align-items: stretch !important;
+    }
+
+    .characterSelection {
+        height: 500px !important;
+        padding: 22px !important;
     }
 
     .characterOption {
-        min-height: 114px;
+        min-height: 114px !important;
+        padding: 16px !important;
     }
 
     .characterOption__image {
-        width: 84px;
-        height: 84px;
+        width: 84px !important;
+        height: 84px !important;
     }
 
     .characterProfile {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-        gap: 26px;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr) !important;
+        gap: 26px !important;
+        padding: 18px !important;
     }
 
-    .characterProfile__cover {
-        min-height: 400px;
-    }
-
+    .characterProfile__cover,
     #characterModel {
-        min-height: 400px;
+        min-height: 400px !important;
     }
 
-    /* Restablecer tamaño original de planetas */
     .planet-1 { width: 100px; right: 5%; top: 80px; }
     .planet-2 { width: 130px; left: 3%; }
     .planet-3 { width: 70px; right: 2%; }
 
-    /* Chat en Desktop */
     .chatPage {
         height: min(760px, calc(100dvh - 140px));
         margin-top: 28px;
@@ -352,18 +502,12 @@ footer.footer-bottom {
         border-radius: 22px;
     }
 
-    .chatPage__avatar {
-        width: 62px;
-        height: 62px;
-        flex: 0 0 62px;
-    }
+    .chatPage__avatar { width: 62px; height: 62px; flex: 0 0 62px; }
+    .chatBubble { max-width: min(78%, 680px); }
 
-    .chatBubble {
-        max-width: min(78%, 680px);
-    }
-
-    /* About Card en Desktop */
-    .about-card {
-        padding: 2.5rem;
-    }
+    .about-card { padding: 2.5rem; }
+    .about-mission-grid { gap: 1.5rem; }
+    .universe-container { height: 520px; }
+    .planet-img { width: 72px; }
+    .planet-label { font-size: 0.92rem; }
 }

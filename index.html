@@ -24,8 +24,11 @@
     <link rel="stylesheet" href="/src/styles/home.css">
     <link rel="stylesheet" href="/src/styles/characters.css">
     <link rel="stylesheet" href="/src/styles/chat.css">
-    <link rel="stylesheet" href="/src/styles/about_notfoud.css">
+    <link rel="stylesheet" href="/src/styles/about.css">
+    <link rel="stylesheet" href="/src/styles/notfaoud.css">
+    <link rel="stylesheet" href="/src/styles/management.css">
     <link rel="stylesheet" href="/src/styles/responsive.css">
+
 </head>
 
 <body>
@@ -38,20 +41,31 @@
         <img src="/img/planeta2.png" alt="" class="bg-planet planet-2">
         <img src="/img/planeta3.png" alt="" class="bg-planet planet-3">
     </div>
-    <nav class="mainNav">
-        <a class="mainNav__logo" href="/" aria-label="ChatVerso - Inicio">
-            <img src="/img/chatverso-logo0.png" alt="ChatVerso" class="mainNav__logoImage">
-        </a>
+   <nav class="mainNav">
+    <a class="mainNav__logo" href="/" aria-label="ChatVerso - Inicio">
+        <img src="/img/chatverso-logo0.png" alt="ChatVerso" class="mainNav__logoImage">
+    </a>
 
+    <!-- Botón Hamburguesa para Mobile -->
+    <button class="mainNav__toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Contenedor Desplegable -->
+    <div class="mainNav__content" id="navContent">
         <div class="mainNav__links">
-            <a class="mainNav__link" href="/">Home</a>
-            <a class="mainNav__link" href="/about" id="aboutLink">About Us</a>
+            <a class="mainNav__link" href="/">Inicio</a>
+            <a class="mainNav__link" href="/about" id="aboutLink">Acerca de Nosotros</a>
+            <a class="mainNav__link" href="/management" id="managementLink">Director</a>
         </div>
 
         <a class="mainNav__button" href="/chat">
             Ir al chat
         </a>
-    </nav>
+    </div>
+</nav>
 
     <div id="app"></div>
 

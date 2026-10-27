@@ -2,7 +2,7 @@
 
 import { CARTMAN_SYSTEM_PROMPT, HOMER_SYSTEM_PROMPT, ELMO_SYSTEM_PROMPT } from "./prompts.js";
 import { buildPayload, normalizeAIResponse, getTrimmedHistory } from "../transform/chatPayload.js";
-import { fetchJson } from "../services/fechtJson.js";
+import { fetchJson } from "./fechtJson.js";
 
 const CHAT_ENDPOINT = "api/chat.js";
 
