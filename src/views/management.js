@@ -32,7 +32,7 @@ export function rendermanagement() {
             
             <div class="tech-logos-container">
                 <div class="tech-item">
-                    <img src="/img/HTML.jpg" alt="HTML5 Logo" class="tech-logo">
+                    <img src="/img/HTML.png" alt="HTML5 Logo" class="tech-logo">
                     <span>HTML5</span>
                 </div>
                 <div class="tech-item">

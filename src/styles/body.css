@@ -276,8 +276,8 @@ footer.footer-bottom {
 
 /* Efectos Hover para Redes */
 .iconoa_footer .github:hover {
-    background: #24292e;
-    border-color: #24292e;
+    background: #b718df;
+    border-color: #b718df;
     transform: translateY(-2px);
 }
 
