@@ -34,6 +34,15 @@ export async function getCharacterReply(uiMessages, characterKey = "cartman") {
       body: JSON.stringify(payload),
     });
   } catch (error)  {
+    // 🔍 Detectar si el servidor no está corriendo (ERR_CONNECTION_REFUSED o TypeError de red)
+    if (error.message === "Failed to fetch" || error.name === "TypeError") {
+      const serverDownError = new Error(
+        "⚠️ El servidor no está ejecutado. Iniciá el servidor para continuar y hacé clic en Reenviar."
+      );
+      serverDownError.isServerDown = true;
+      throw serverDownError;
+    }
+
     if (error.status === 429) {
       const segundos = error.body?.retryAfterSeconds;
 
@@ -50,17 +59,19 @@ export async function getCharacterReply(uiMessages, characterKey = "cartman") {
 
     throw error;
   }
-const text = normalizeAIResponse(rawResponse);
-const metadata = rawResponse?.usageMetadata;
 
-const usage = {
-  inputTokens: metadata?.promptTokenCount ?? 0,
-  outputTokens: metadata?.candidatesTokenCount ?? 0,
-  totalTokens: metadata?.totalTokenCount ??
-    ((metadata?.promptTokenCount ?? 0) +
-     (metadata?.candidatesTokenCount ?? 0)),
-};
+  const text = normalizeAIResponse(rawResponse);
+  const metadata = rawResponse?.usageMetadata;
 
-console.log("[Consumo real de Gemini]", usage);
+  const usage = {
+    inputTokens: metadata?.promptTokenCount ?? 0,
+    outputTokens: metadata?.candidatesTokenCount ?? 0,
+    totalTokens: metadata?.totalTokenCount ??
+      ((metadata?.promptTokenCount ?? 0) +
+       (metadata?.candidatesTokenCount ?? 0)),
+  };
 
-return { text, usage };}
+  console.log("[Consumo real de Gemini]", usage);
+
+  return { text, usage };
+}

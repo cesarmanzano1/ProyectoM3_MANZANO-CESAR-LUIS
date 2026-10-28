@@ -90,9 +90,12 @@ Antes de ejecutar el proyecto, necesitás:
 
 ```bash
 git clone https://github.com/cesarmanzano1/ProyectoM3_MANZANO-CESAR-LUIS.git
+```
+- Ubicarte dentro de la carpeta del proyecto
+
+```bash
 cd ProyectoM3_MANZANO-CESAR-LUIS
 ```
-
 ### 2. Instalar las dependencias
 
 ```bash
@@ -196,25 +199,26 @@ Si el proyecto aún no está vinculado a Vercel, seguí las instrucciones que mu
 
 ## 📸 Capturas de pantalla
 
-Agregá capturas reales a la carpeta `img/` y usá estos nombres —o actualizá las rutas si elegís otros— para que se vean en GitHub.
 
 ### Inicio
 
-![Pantalla de inicio de ChatVerso](./img/captura-inicio.png)
+![Pantalla de inicio de ChatVerso](./img/screnshot/1.png)
 
-### Personajes y modelos 3D
-
-![Selección de personajes y modelos 3D](./img/captura-personajes-3d.png)
 
 ### Chat con inteligencia artificial
 
-![Chat de ChatVerso](./img/captura-chat.png)
+![Chat de ChatVerso](./img/screnshot/chat_cartman.png)
 
 ### Vista Acerca de nosotros
 
-![Vista Acerca de nosotros](./img/captura-about.png)
+![Vista Acerca de nosotros](./img/screnshot/5.png)
 
-> **Antes de entregar:** comprobá que las cuatro imágenes existan en `img/`. Si todavía no las agregaste, estas imágenes no se mostrarán en GitHub.
+### Vista  Director
+
+![Vista Acerca de nosotros](./img/screnshot/4.png)
+
+Para ver mas imagenes dirigirse a la carpeta de img/screnshot.
+
 
 ## 🤖 Registro del uso de inteligencia artificial
 
