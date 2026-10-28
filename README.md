@@ -31,7 +31,7 @@ La aplicación incluye tres personajes:
 
 - **Eric Cartman:** personaje de *South Park*, conocido por su personalidad provocadora, sarcástica y autoritaria.
 - **Homero Simpson:** protagonista de *Los Simpson*, reconocido por su humor, sus ocurrencias y su personalidad despreocupada.
-- **Elmo:** personaje de *Plaza Sésamo*, caracterizado por su alegría, curiosidad y personalidad amigable.
+- **Elmo grosero:** personaje contrario al de *Plaza Sésamo*, caracterizado por siempre andar malhumorado, irreverente y provocador y sarcastico.
 
 Cada personaje aporta una personalidad diferente para ofrecer una experiencia de conversación entretenida e interactiva.
 
