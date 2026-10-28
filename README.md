@@ -211,11 +211,11 @@ Si el proyecto aún no está vinculado a Vercel, seguí las instrucciones que mu
 
 ### Vista Acerca de nosotros
 
-![Vista Acerca de nosotros](./img/screnshot/5.png)
+![Vista Acerca de nosotros](./img/screnshot/4.png)
 
 ### Vista  Director
 
-![Vista Acerca de nosotros](./img/screnshot/4.png)
+![Vista Acerca de nosotros](./img/screnshot/5.png)
 
 Para ver mas imagenes dirigirse a la carpeta de img/screnshot.
 
