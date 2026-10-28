@@ -81,7 +81,11 @@ export function renderChat() {
         <div class="tokenCounter" aria-label="Uso de tokens">
           <div class="tokenCounter__headerText">
             <span>Uso de Tokens:</span>
-            <span class="tokenCounter__stats">Gastados: <strong id="usedTokens">0</strong> | Disponibles: <strong id="availableTokens">2000</strong></span>
+            <span class="tokenCounter__stats">
+               Gastados: <strong id="usedTokens">0</strong> |
+               Disponibles: <strong id="availableTokens">10000</strong> |
+               Última respuesta: <strong id="lastTokens">0</strong>
+            </span>
           </div>
           <div class="tokenCounter__barContainer">
             <div class="tokenCounter__bar" id="tokenBar" style="width: 0%;"></div>
@@ -99,7 +103,7 @@ export function renderChat() {
 
       <form class="chatPage__composer" id="chatComposer">
         <label class="sr-only" for="chatInput">Escribí tu mensaje</label>
-        <input id="chatInput" type="text" placeholder="Escribí un mensaje a ${escapeHtml(activeChar.name)}..." autocomplete="off" maxlength="2000">
+        <input id="chatInput" type="text" placeholder="Escribí un mensaje a ${escapeHtml(activeChar.name)}..." autocomplete="off" maxlength="10000">
         <button id="chatSubmitBtn" type="submit" aria-label="Enviar mensaje">Enviar <span aria-hidden="true">➤</span></button>
       </form>
     </main>
@@ -107,8 +111,9 @@ export function renderChat() {
 
   setupChat();
   scrollToBottom();
-  const initialTokens = state.messages.reduce((acc, m) => acc + m.text.length, 100);
-  updateTokenBar(initialTokens);
+  // const initialTokens = state.messages.reduce((acc, m) => acc + m.text.length, 100);
+  // updateTokenBar(initialTokens);
+  updateTokenBar(getUsedTokens(), 0);
 }
 
 function renderMessages() {
@@ -146,10 +151,17 @@ function escapeHtml(value) {
 function setupChat() {
   const form = document.querySelector("#chatComposer");
   const input = document.querySelector("#chatInput");
+
   if (!form || !input) return;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (getUsedTokens() >= MAX_TOKENS) {
+      state.status = "error";
+      state.error = "Alcanzaste el límite de 10.000 tokens.";
+      updateChatUI();
+      return;
+    }
     const text = input.value.trim();
     if (!text || state.status === "loading") return;
 
@@ -161,15 +173,26 @@ function setupChat() {
     updateChatUI();
 
     try {
-      const reply = await getCharacterReply(state.messages, currentCharacterKey);
+      // const reply = await getCharacterReply(state.messages, currentCharacterKey);
+
+      const result = await getCharacterReply(
+        state.messages,
+        currentCharacterKey
+      );
+
+      const reply = result.text;
+      const tokensUsados = result.usage.totalTokens;
       if (!reply) throw new Error("El servidor devolvió una respuesta vacía.");
       state.messages.push({ role: "character", text: reply });
+
+      addUsedTokens(tokensUsados);
+
       state.status = "idle";
       state.error = null;
       saveConversation();
 
-      const estimatedTokens = state.messages.reduce((acc, m) => acc + m.text.length, 100);
-      updateTokenBar(estimatedTokens);//actualizar el estado de tokens
+      // const estimatedTokens = state.messages.reduce((acc, m) => acc + m.text.length, 100);
+      // updateTokenBar(estimatedTokens);//actualizar el estado de tokens
 
 
     } catch (error) {
@@ -199,25 +222,50 @@ function setupChat() {
   input.focus();
 }
 
+const tokenStorageKey = () => "chatverso:tokens:total";
+
+function getUsedTokens() {
+  return Number(sessionStorage.getItem(tokenStorageKey()) || 0);
+}
+
+function addUsedTokens(tokens) {
+  const tokensReales = Number(tokens);
+
+  if (!Number.isFinite(tokensReales) || tokensReales < 0) {
+    console.error("Consumo de tokens inválido:", tokens);
+    return;
+  }
+
+  const total = getUsedTokens() + tokensReales;
+
+  sessionStorage.setItem(tokenStorageKey(), String(total));
+  updateTokenBar(total, tokensReales);
+
+  console.log("[ChatVerso] Tokens de esta respuesta:", tokensReales);
+  console.log("[ChatVerso] Total acumulado:", total);
+  console.log("[ChatVerso] Tokens disponibles:", Math.max(0, MAX_TOKENS - total));
+}
+
 function scrollToBottom() {
   const messages = document.querySelector("#chatMessages");
   if (messages) messages.scrollTop = messages.scrollHeight;
 }
 
 
-function updateTokenBar(totalUsed) {
-  const maxTokens = 2000; // Límite máximo estimado o configurado
-  const used = Math.min(totalUsed, maxTokens);
-  const available = maxTokens - used;
-  const percentage = Math.round((used / maxTokens) * 100);
+const MAX_TOKENS = 10000;
 
+function updateTokenBar(totalUsed, lastUsed = 0) {
   const usedEl = document.querySelector("#usedTokens");
   const availableEl = document.querySelector("#availableTokens");
+  const lastEl = document.querySelector("#lastTokens");
   const barEl = document.querySelector("#tokenBar");
 
-  if (usedEl) usedEl.textContent = used;
-  if (availableEl) availableEl.textContent = available;
-  if (barEl) {
-    barEl.style.width = `${percentage}%`;
-  }
+  const used = Math.max(0, totalUsed);
+  const available = Math.max(0, MAX_TOKENS - used);
+  const percentage = Math.min((used / MAX_TOKENS) * 100, 100);
+
+  if (usedEl) usedEl.textContent = used.toLocaleString("es-AR");
+  if (availableEl) availableEl.textContent = available.toLocaleString("es-AR");
+  if (lastEl) lastEl.textContent = lastUsed.toLocaleString("es-AR");
+  if (barEl) barEl.style.width = `${percentage}%`;
 }

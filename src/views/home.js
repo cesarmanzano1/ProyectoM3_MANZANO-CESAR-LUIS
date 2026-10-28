@@ -124,7 +124,7 @@ export function renderHome() {
                             <div class="tokenCounter" aria-label="Uso de tokens" style="width: 100%; max-width: 100%;">
                                 <div class="tokenCounter__headerText">
                                     <span>Uso de Tokens:</span>
-                                    <span class="tokenCounter__stats">Gastados: <strong id="usedTokens">0</strong> | Disponibles: <strong id="availableTokens">2000</strong></span>
+                                    <span class="tokenCounter__stats">Gastados: <strong id="usedTokens">0</strong> | Disponibles: <strong id="availableTokens">10000</strong></span>
                                 </div>
                                 <div class="tokenCounter__barContainer">
                                     <div class="tokenCounter__bar" id="tokenBar" style="width: 0%;"></div>
@@ -167,32 +167,35 @@ export function renderHome() {
 
     // Función para actualizar los tokens según el personaje seleccionado
     function updateTokensForCharacter(charKey) {
-        const savedMsgs = sessionStorage.getItem(`chatverso:messages:${charKey}`);
-        let totalChars = 100; // base mínima
+        const MAX_TOKENS = 10000;
 
-        if (savedMsgs) {
-            try {
-                const parsed = JSON.parse(savedMsgs);
-                totalChars = parsed.reduce((acc, m) => acc + m.text.length, 100);
-            } catch (e) {
-                console.warn("No se pudieron leer los mensajes");
-            }
-        }
+        // Leer el consumo compartido por todos los personajes.
+        const used = Number(
+            sessionStorage.getItem("chatverso:tokens:total") || 0
+        );
 
-        const maxTokens = 2000;
-        const used = Math.min(totalChars, maxTokens);
-        const available = maxTokens - used;
-        const percentage = Math.round((used / maxTokens) * 100);
+        const available = Math.max(0, MAX_TOKENS - used);
+        const percentage = Math.min(
+            (used / MAX_TOKENS) * 100,
+            100
+        );
 
         const uEl = app.querySelector("#usedTokens");
         const aEl = app.querySelector("#availableTokens");
         const bEl = app.querySelector("#tokenBar");
 
-        if (uEl) uEl.textContent = used;
-        if (aEl) aEl.textContent = available;
-        if (bEl) bEl.style.width = `${percentage}%`;
-    }
+        if (uEl) {
+            uEl.textContent = used.toLocaleString("es-AR");
+        }
 
+        if (aEl) {
+            aEl.textContent = available.toLocaleString("es-AR");
+        }
+
+        if (bEl) {
+            bEl.style.width = `${percentage}%`;
+        }
+    }
     function selectCharacter(characterKey) {
         const character = characters[characterKey];
 
@@ -222,7 +225,7 @@ export function renderHome() {
                 return span;
             })
         );
-       model.setAttribute("alt", `Modelo 3D de ${character.name}`);
+        model.setAttribute("alt", `Modelo 3D de ${character.name}`);
         model.setAttribute("src", character.model);
 
         // Actualizar la barra de tokens para este personaje al hacer clic
@@ -245,4 +248,5 @@ export function renderHome() {
 
     // Detectar cuál fue el último personaje activo o iniciar con Homero
     const lastCharKey = sessionStorage.getItem("chatverso:lastCharacter") || "homero";
-    selectCharacter(lastCharKey);}
+    selectCharacter(lastCharKey);
+}

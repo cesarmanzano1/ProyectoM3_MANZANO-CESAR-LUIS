@@ -33,36 +33,34 @@ export async function getCharacterReply(uiMessages, characterKey = "cartman") {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-  } catch (error) {
-    // if (error.status === 429 && error.body?.retryAfterSeconds) {
-    // } else {
-    //   throw error;
-    // }
+  } catch (error)  {
     if (error.status === 429) {
-        const segundos = error.body?.retryAfterSeconds;
+      const segundos = error.body?.retryAfterSeconds;
 
-        if (segundos) {
-            throw new Error(
-                `Se alcanzó el límite de solicitudes. Intentá nuevamente en ${segundos} segundos.`
-            );
-        }
+      const nuevoError = new Error(
+        segundos
+          ? `Se alcanzó el límite de solicitudes. Intentá nuevamente en ${segundos} segundos.`
+          : "Se alcanzó el límite de solicitudes. Esperá un momento e intentá nuevamente."
+      );
 
-        throw new Error(
-            "Se alcanzó el límite de solicitudes. Esperá un momento e intentá nuevamente."
-        );
+      nuevoError.status = 429;
+      nuevoError.retryAfterSeconds = segundos;
+      throw nuevoError;
     }
 
     throw error;
-    
   }
+const text = normalizeAIResponse(rawResponse);
+const metadata = rawResponse?.usageMetadata;
 
-  // 4. Normalizar la respuesta a string limpio.
-  const text = normalizeAIResponse(rawResponse);
+const usage = {
+  inputTokens: metadata?.promptTokenCount ?? 0,
+  outputTokens: metadata?.candidatesTokenCount ?? 0,
+  totalTokens: metadata?.totalTokenCount ??
+    ((metadata?.promptTokenCount ?? 0) +
+     (metadata?.candidatesTokenCount ?? 0)),
+};
 
-  const usage = rawResponse?.usageMetadata;
-  if (usage) {
-    console.log(`[Tokens] input: ${usage.promptTokenCount}, output: ${usage.candidatesTokenCount}`);
-  }
+console.log("[Consumo real de Gemini]", usage);
 
-  return text;
-}
+return { text, usage };}

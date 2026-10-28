@@ -17,10 +17,19 @@ if (!Array.isArray(contents) || contents.length === 0) {
     return res.status(400).json({ error: "contents required and must be non-empty" });
   }
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// const model = genAI.getGenerativeModel({
+//   model: "gemini-flash-lite-latest",
+//   systemInstruction,
+//   generationConfig,
+// });
 const model = genAI.getGenerativeModel({
   model: "gemini-flash-lite-latest",
   systemInstruction,
-  generationConfig,
+  generationConfig: {
+    ...generationConfig,
+    maxOutputTokens: 180,
+    temperature: 0.8,
+  },
 });
 
 const result = await model.generateContent({ contents });
