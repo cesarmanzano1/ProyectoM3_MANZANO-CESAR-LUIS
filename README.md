@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://proyecto-m3-omega.vercel.app/">Ver aplicación desplegada</a> ·
-  <a href="https://github.com/cesarmanzano1/ProyectoM3_MANZANO-CESAR-LUIS">Repositorio de GitHub</a>
+  <a href="https://github.com/cesarmanzano1/ProyectoM3_MANZANO-CESAR-LUIS">Repositorio de GitHub </a>
 </p>
 
 ---

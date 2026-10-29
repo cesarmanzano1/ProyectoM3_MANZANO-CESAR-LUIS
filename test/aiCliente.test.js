@@ -6,7 +6,7 @@ import { fetchJson } from "../src/services/fechtJson.js";
 vi.mock("../src/services/fechtJson.js", () => ({
     fetchJson: vi.fn(),
 }));
-
+//
 describe("getCharacterReply", () => {
     beforeEach(() => {
         vi.resetAllMocks();
