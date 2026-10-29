@@ -21,7 +21,7 @@ if (!Array.isArray(contents) || contents.length === 0) {
 //   model: "gemini-flash-lite-latest",
 //   systemInstruction,
 //   generationConfig,
-// });
+// })
 const model = genAI.getGenerativeModel({
   model: "gemini-flash-lite-latest",
   systemInstruction,
