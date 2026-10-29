@@ -108,18 +108,6 @@ Este comando instala las dependencias declaradas en `package.json`. La carpeta `
 
 Creá un archivo `.env` en la raíz del proyecto a partir de `.env.example`.
 
-En Windows PowerShell:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-En Linux o macOS:
-
-```bash
-cp .env.example .env
-```
-
 Abrí `.env` y completá la variable con tu propia clave:
 
 ```env
